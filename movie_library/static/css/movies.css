@@ -72,3 +72,17 @@
   text-align: center;
   font-size: 1.2rem;
 }
+
+.trash {
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 1rem;
+  margin-right: 1.5rem;
+  fill: var(--text-dark);
+  align-items: center;
+}
+
+.trash:hover {
+  fill: var(--accent-colour);
+  stroke: var(--accent-colour);
+}

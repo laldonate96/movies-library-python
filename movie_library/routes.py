@@ -188,3 +188,16 @@ def toggle_theme():
         session["theme"] = "dark"
 
     return redirect(request.args.get("current_page"))
+
+@pages.route("/delete/<string:_id>", methods=["GET", "DELETE"])
+@login_required
+def delete_movie(_id):
+    # Remove the movie from movie collection
+    current_app.db.movie.delete_one({"_id": _id})
+
+    # Remove the movie from the movies array tied to the user
+    current_app.db.user.update_one(
+            {"_id": session["user_id"]}, {"$pull": {"movies": _id}}
+        )
+
+    return redirect(url_for(".index"))
