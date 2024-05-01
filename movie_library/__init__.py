@@ -16,4 +16,3 @@ app.config["SECRET_KEY"] = os.environ.get(
 app.db = MongoClient(app.config["MONGODB_URI"]).get_default_database()
 
 app.register_blueprint(pages)
-    
