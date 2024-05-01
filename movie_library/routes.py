@@ -49,6 +49,21 @@ def index():
         movies_data=movies,
     )
 
+@pages.route("/social")
+@login_required
+def social():
+    all_users = current_app.db.user.find()
+    users = [User(**user) for user in all_users]
+
+    return render_template(
+        "social.html",
+        title="Movies Watchlist - Social",
+        users=users,
+    )
+
+@pages.route("/hello-world")
+def hello_world():
+    return "Hello, World!"
 
 @pages.route("/register", methods=["POST", "GET"])
 def register():
